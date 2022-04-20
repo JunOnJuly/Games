@@ -2,6 +2,8 @@
 
 ## Excepted
 
-* ### Sudoku
-
 * ### Othello
+
+## Working
+
+* ### Sudoku
