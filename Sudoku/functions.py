@@ -1,6 +1,5 @@
 import random as rd
-import numpy as np
-from pprint import pprint
+import pygame
 
 
 # ------------------------------- make solution map -------------------------------#
