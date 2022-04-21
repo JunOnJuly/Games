@@ -1,5 +1,9 @@
 import random as rd
+import numpy as np
 from pprint import pprint
+
+
+# ------------------------------- make solution map -------------------------------#
 
 
 def select_idx(area_num: int) -> list:
@@ -45,9 +49,8 @@ def place_num_into_map(map_base: list, num_shuffle: int) -> list:
         count += 1
 
 
-def make_solution_map(difficulty: int) -> list:
+def make_solution_map() -> list:
     """
-    :param difficulty: select the difficulty among the 1 to 10
     :return: create a background map according to the number of lines and difficulty
     """
     map_base = []
@@ -58,4 +61,19 @@ def make_solution_map(difficulty: int) -> list:
     return place_num_into_map(map_base, rd.randint(1, 10))
 
 
-pprint(make_solution_map(1))
+# ------------------------------- make problem map -------------------------------#
+
+
+def make_problem_map(map_solution: list, difficulty: int) -> list:
+    """
+    :param map_solution: solution map
+    :param difficulty: factor that determines how difficult a problem is, (1~4)
+    :return: problem map
+    """
+    list_candid_idx = [[row, column] for column in range(9) for row in range(9)]
+    idx_selected = rd.sample(list_candid_idx, k=(difficulty+1) * 9)
+
+    for idx in range((difficulty+1) * 9):
+        map_solution[idx_selected[idx][0]][idx_selected[idx][1]] = 0
+
+    return map_solution
